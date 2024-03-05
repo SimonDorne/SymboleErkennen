@@ -32,19 +32,8 @@ public:
     ~Widget();
 
 private:    //m_ for memberVariablen von widget.h Widget:: Prefix wird in widget.cpp weggelassen
-    int m_anzahlhits=0;
-    double m_velocity=0;
-    double m_puls;
-    double m_xdirection=1;
-    double m_ydirection=1;
-    QGraphicsTextItem * m_text=nullptr;
-    QString m_ausgabeVersuche="";
-    QGraphicsPolygonItem m_polygon;
-    QPointF m_now, m_01, m_10, m_11 , mittelpunkt;
-    QGraphicsEllipseItem * m_golfball=nullptr;
+
     QGraphicsEllipseItem * m_circlecursor=nullptr;
-    QGraphicsEllipseItem * m_ziel=nullptr;
-    QGraphicsLineItem * m_line=nullptr;
 };
 #endif // WIDGET_H
 // WIDGET_H
