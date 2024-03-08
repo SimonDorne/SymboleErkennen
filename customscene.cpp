@@ -17,17 +17,20 @@ void CustomScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     emit signalTargetCoordinate(event->scenePos());
 }
 
+
 void CustomScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
 
     auto b = std::chrono::high_resolution_clock::now();
     double mytime = std::chrono::duration<double>(b - m_begin_time).count();
     emit clickTargetCoordinate(event->scenePos(), mytime);
     m_mouse_is_pressed = false;
+    m_malbar=false;
 }
 
 void CustomScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
 
     m_begin_time = std::chrono::high_resolution_clock::now();
+    emit signalTargetCoordinate(event->scenePos());
     m_mouse_is_pressed = true;
 
 }

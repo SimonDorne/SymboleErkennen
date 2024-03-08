@@ -1,10 +1,11 @@
 #ifndef CUSTOMSCENE_H
 #define CUSTOMSCENE_H
 
+#include "qgraphicsitem.h"
 #include <QObject>
 #include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
-
+#include <QAbstractButton>
 class CustomScene : public QGraphicsScene
 {
     Q_OBJECT
@@ -28,7 +29,7 @@ private:
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
-
+    bool m_malbar=true;
     bool m_mouse_is_pressed = false;
     decltype(std::chrono::high_resolution_clock::now()) m_begin_time = std::chrono::high_resolution_clock::now();
 };
