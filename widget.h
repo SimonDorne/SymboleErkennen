@@ -1,6 +1,8 @@
 #ifndef WIDGET_H
 #define WIDGET_H
 
+#include <ctime>
+#include<random>
 #include<QWidget>
 #include<QGraphicsView>
 #include<QGraphicsEllipseItem>
@@ -34,6 +36,10 @@ public:
     void setCursorcircle(QPointF point);
     void mausClick(QPointF dummy);
     void clearDrawing();
+    void paintrect();
+    void painttriang();
+    void paintcirc();
+    bool isItemInScene(QGraphicsItem *item, QGraphicsScene *scene);
     ~Widget();
 
 private:    //m_ for memberVariablen von widget.h Widget:: Prefix wird in widget.cpp weggelassen
@@ -41,6 +47,7 @@ private:    //m_ for memberVariablen von widget.h Widget:: Prefix wird in widget
     QGraphicsEllipseItem * m_circlecursor=nullptr;
 
     bool m_malbar=true;
+    bool m_rectIsPrinted=true;
     std::vector<QPointF> m_points;
     QGraphicsRectItem *m_papier=nullptr;
     QPushButton *m_kreis = nullptr;
@@ -49,6 +56,11 @@ private:    //m_ for memberVariablen von widget.h Widget:: Prefix wird in widget
     QPushButton *m_undefinierbar=nullptr;
     QPainterPath m_path;
     QGraphicsPathItem *m_line;
+    QGraphicsPathItem *m_lineRed;
+    std::default_random_engine generator;
+    const int m_mean_x = 30 + 520 / 2;
+    const int m_mean_y = 50 + 520 / 2;
+    const double m_stddev = 200;
 
 
 private slots:
