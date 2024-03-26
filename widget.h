@@ -25,10 +25,11 @@
 #include <QButtonGroup>
 #include<QGraphicsRectItem>
 #include<QPainterPath>
-
+#include"NeuralNetwork.h"
 class Widget : public QGraphicsView
 {
     Q_OBJECT
+    SimpleNeuralNetwork nn;
 
 public:
     Widget(QWidget *parent = nullptr);
@@ -39,7 +40,10 @@ public:
     void paintrect();
     void painttriang();
     void paintcirc();
-    bool isItemInScene(QGraphicsItem *item, QGraphicsScene *scene);
+    void checkPapier();
+    void train();
+    void symbolRaten();
+    void generateTrainingdata();
     ~Widget();
 
 private:    //m_ for memberVariablen von widget.h Widget:: Prefix wird in widget.cpp weggelassen
@@ -53,14 +57,20 @@ private:    //m_ for memberVariablen von widget.h Widget:: Prefix wird in widget
     QPushButton *m_kreis = nullptr;
     QPushButton *m_dreieck = nullptr;
     QPushButton *m_viereck = nullptr;
-    QPushButton *m_undefinierbar=nullptr;
+    QPushButton *m_radierer=nullptr;
+    QPushButton *m_train=nullptr;
+    QPushButton *m_guess=nullptr;
+    QPushButton *m_generate=nullptr;
     QPainterPath m_path;
     QGraphicsPathItem *m_line;
-    QGraphicsPathItem *m_lineRed;
     std::default_random_engine generator;
+    QGraphicsRectItem m_pixel;
+    std::vector<float> m_pixelValue;
     const int m_mean_x = 30 + 520 / 2;
     const int m_mean_y = 50 + 520 / 2;
     const double m_stddev = 200;
+    std::vector<uint32_t> topology={676,9,3};
+
 
 
 private slots:

@@ -18,6 +18,10 @@ set(PROJECT_SOURCES
         widget.h
 		customscene.h
 		customscene.cpp
+		Matrix.h
+		matrix.cpp
+		NeuralNetwork.h
+		neuralNetwork.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
